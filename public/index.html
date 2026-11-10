@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100d19">
+  <meta name="description" content="Our Chat — private conversations, on your terms.">
+  <title>Our Chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="authView" class="auth-shell">
+    <div class="auth-card">
+      <div class="brand brand-large"><span class="brand-mark">o</span><span>our<span class="brand-light">chat</span></span></div>
+      <p class="eyebrow">PRIVATE MESSAGING, MADE PERSONAL</p>
+      <h1 id="authTitle">Welcome back.</h1>
+      <p class="muted" id="authSubtitle">Sign in to continue your conversations.</p>
+
+      <form id="loginForm" class="auth-form">
+        <label>Username or Our Chat ID<input name="identity" autocomplete="username" placeholder="username or OC-4A92F7B1C0D2E4F6" required></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" placeholder="Your password" required></label>
+        <button class="primary-btn full" type="submit">Sign in <span>→</span></button>
+      </form>
+
+      <form id="registerForm" class="auth-form hidden">
+        <label>Display name<input name="displayName" maxlength="40" placeholder="How people see you" required></label>
+        <label>Username<input name="username" maxlength="24" autocomplete="username" placeholder="yourname" required></label>
+        <label>Password<input name="password" type="password" minlength="10" autocomplete="new-password" placeholder="At least 10 characters" required></label>
+        <button class="primary-btn full" type="submit">Create account <span>→</span></button>
+      </form>
+      <p class="auth-switch" id="authSwitch">New to Our Chat? <button type="button" id="showRegister">Create an account</button></p>
+      <p class="form-error" id="authError" role="alert"></p>
+      <p class="fine-print">By continuing, you agree to use Our Chat respectfully and keep your account secure.</p>
+    </div>
+    <div class="auth-art">
+      <div class="orb orb-one"></div><div class="orb orb-two"></div>
+      <div class="art-copy"><span class="art-kicker">YOUR PEOPLE. YOUR SPACE.</span><h2>Good conversations<br><em>start with a connection.</em></h2><p>Find someone by their Our Chat ID. They decide whether your conversation begins.</p></div>
+      <div class="art-note"><span class="note-dot"></span> Private by request. Always personal.</div>
+    </div>
+  </div>
+
+  <div id="appView" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">o</span><span>our<span class="brand-light">chat</span></span></div>
+      <div class="sidebar-user">
+        <div class="avatar" id="sideAvatar">U</div>
+        <div class="user-meta"><strong id="sideName">Your name</strong><span id="sideHandle">@username</span></div>
+        <button class="icon-btn" id="logoutBtn" title="Sign out" aria-label="Sign out">↗</button>
+      </div>
+      <nav class="main-nav">
+        <button class="nav-item active" data-page="chats"><span class="nav-icon">▣</span> Chats <span class="nav-count" id="chatCount"></span></button>
+        <button class="nav-item" data-page="discover"><span class="nav-icon">⌕</span> Find people</button>
+        <button class="nav-item" data-page="requests"><span class="nav-icon">⇢</span> Requests <span class="nav-count" id="requestCount"></span></button>
+        <button class="nav-item" data-page="profile"><span class="nav-icon">◉</span> My profile</button>
+      </nav>
+      <div class="sidebar-footer"><span class="online-dot"></span> Your space, your rules</div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div><p class="eyebrow" id="pageEyebrow">YOUR INBOX</p><h1 id="pageTitle">Messages</h1></div>
+        <div class="topbar-right"><span class="secure-label"><span>✦</span> Private connections</span><div class="avatar avatar-small" id="topAvatar">U</div></div>
+      </header>
+      <section id="pageContent" class="page-content"></section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
